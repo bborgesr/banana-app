@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Store, select } from "@ngrx/store";
 import { Observable } from "rxjs";
 import { AppState, getMyBanana } from "../app.state";
-import { GetNewBanana } from "./state";
+import { GetNewBanana, PeelBanana } from "./state";
 
 @Component({
   selector: "app-banana",
@@ -22,9 +22,13 @@ export class BananaComponent implements OnInit {
     // this.banana$.subscribe(event => console.log(event));
   }
 
-  newBanana() {}
+  newBanana() {
+    this.store.dispatch(new GetNewBanana(null));
+  }
 
-  peelBanana() {}
+  peelBanana() {
+    this.store.dispatch(new PeelBanana(null));
+  }
 
   eatBanana() {}
 

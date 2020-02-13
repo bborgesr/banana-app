@@ -4,8 +4,4 @@ export interface State {
   color: string;
 }
 
-export const initialState: State = {
-  isPeeled: false,
-  bitesRemaining: 9,
-  color: "yellow"
-} as State;
+export const initialState: State = {} as State;
