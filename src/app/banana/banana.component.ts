@@ -1,35 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
+import { Store, select } from "@ngrx/store";
+import { Observable } from "rxjs";
+import { AppState, getMyBanana } from "../app.state";
+import { GetNewBanana } from "./state";
 
 @Component({
-    selector: 'app-banana',
-    templateUrl: './banana.component.html',
-    styleUrls: ['./banana.component.css']
+  selector: "app-banana",
+  templateUrl: "./banana.component.html",
+  styleUrls: ["./banana.component.css"]
 })
 export class BananaComponent implements OnInit {
+  title = "My NgRx Banana App";
 
-    title = 'My NgRx Banana App';
+  banana$: Observable<any>;
 
-    constructor() {
+  constructor(private store: Store<AppState>) {}
 
-    }
+  ngOnInit() {
+    this.newBanana();
+    this.banana$ = this.store.pipe(select(getMyBanana));
+    // this.banana$.subscribe(event => console.log(event));
+  }
 
-    ngOnInit() {
+  newBanana() {}
 
-    }
+  peelBanana() {}
 
-    newBanana() {
+  eatBanana() {}
 
-    }
-
-    peelBanana() {
-
-    }
-
-    eatBanana() {
-
-    }
-
-    timeHop() {
-
-    }
+  timeHop() {}
 }
